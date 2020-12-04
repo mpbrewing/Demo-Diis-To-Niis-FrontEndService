@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>DIIS 2 NIIS Message Converter</title>
+    </head>
+    <body>
+        <h1>
+            DIIS 2 NIIS Message Converter
+        </h1>
+
+        <div style="float:left">
+            <form th:action="@{/index}" method="post">
+                <p>DIIS Request</p>
+                <textarea name="diisRequest" cols="50" rows="14" th:field="${request.account}"></textarea>
+                <p><input type="submit" value="Convert DIIS to NIIS"/></p>
+            </form>
+            <form>
+                <p>NIIS Json Request</p>
+                <textarea name="niisJsonRequest" cols="50" rows="14" th:field="${response.account}"></textarea>
+            </form>
+        </div>
+
+    </body>
+</html>
