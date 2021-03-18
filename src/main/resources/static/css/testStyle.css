@@ -1,0 +1,136 @@
+/* Scss Document */
+img.logo {
+  width: auto;
+  height: 70px; }
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "sans-serif"; }
+
+.header h1 {
+  margin: 0;
+  background-color: #6bc04b; }
+
+.icon-details {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  /* Other styles here */ }
+
+.icon-operations {
+  background: url("../images/operations.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  /*filter: invert(40%) sepia(21%) saturate(0%) hue-rotate(226deg) brightness(96%) contrast(96%);*/ }
+
+.icon-convert {
+  background: url("../images/convert.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat; }
+
+.icon-history {
+  background: url("../images/history.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  /*filter: invert(40%) sepia(21%) saturate(0%) hue-rotate(226deg) brightness(96%) contrast(96%);*/ }
+
+.nav__links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 24vh;
+  width: 250px;
+  background: #FFFFFF;
+  transform: translateY(80px);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /*border-style: solid;
+  border-width: 5px;
+  border-color: black;*/ }
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  filter: invert(98%) sepia(0%) saturate(9%) hue-rotate(162deg) brightness(90%) contrast(93%);
+  font-weight: bold;
+  font-size: 26px;
+  text-decoration: none;
+  padding: 12px 15px;
+  margin-top: 10px;
+  font-family: "Nexa Regular", "Nexa Bold";
+  font-style: normal;
+  src: url("../NexaRegular.ttf");
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2px; }
+
+.nav__link > i {
+  margin-right: 15px; }
+
+.nav__link--active {
+  color: #000000;
+  filter: invert(61%) sepia(56%) saturate(461%) hue-rotate(59deg) brightness(98%) contrast(88%);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 26px;
+  text-decoration: none;
+  padding: 12px 15px;
+  font-family: "Nexa Regular", "Nexa Bold";
+  font-style: normal;
+  src: url("../NexaRegular.ttf"); }
+
+.outline {
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #cccccc; }
+
+.sideInput {
+  position: absolute;
+  top: 340px;
+  left: 10px;
+  height: 28vh;
+  width: 245px;
+  text-align: center;
+  font-family: "Nexa Regular", "Nexa Bold";
+  font-style: normal;
+  src: url("../NexaRegular.ttf");
+  color: #666666; }
+
+div.sideInput div {
+  padding-top: 10px;
+  position: relative;
+  margin: 4px 0; }
+
+label {
+  color: #cccccc;
+  position: absolute;
+  top: 10px;
+  font-size: 22px;
+  margin: 10px;
+  padding: 0 10px;
+  background-color: white;
+  -webkit-transition: top .2s ease-in-out,  font-size .2s ease-in-out;
+  transition: top .2s ease-in-out,  font-size .2s ease-in-out; }
+
+active {
+  top: -25px;
+  font-size: 14px; }
+
+input[type=text] {
+  width: 84%;
+  padding: 10px;
+  border: 2px solid #cccccc;
+  border-radius: 8px;
+  font-size: 14px;
+  /*background-color: teal;*/
+  color: #333333; }
+
+input[type=text]:focus {
+  outline: none; }

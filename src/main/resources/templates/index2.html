@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Diis To Niis</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="header">
+			<h1>
+				<img src="images/logo2.png" alt="Diis To Niis" class="logo" draggable="false"/>
+			</h1>
+		</div>
+		<nav class="nav">
+			<div id="navList" class="nav__links" >
+				<a class="nav__link nav__link--active" href="operations.html" id = "btnNav">
+					<i class="icon-operations icon-details"></i>
+					Operations
+				</a>
+				<a class="nav__link" href="convert.html" id = "btnNav1" onMouseOver="over(this)" onMouseOut="normal(this)">
+					<i class="icon-convert icon-details"></i>
+					Convert
+				</a>
+				<a class="nav__link" href="history.html" id = "btnNav2" onMouseOver="over(this)" onMouseOut="normal(this)">
+					<i class="icon-history icon-details"></i>
+					History
+				</a>
+			</div>
+		</nav>
+		<div class="sideInput outline">
+			<h2>DIIS</h2>
+			<div class="hold">
+    			<label for="host" >Host</label>
+    			<input id="host" type="text" max="1000"/>
+  			</div>
+			<div class="hold">
+    			<label for="port" >Port</label>
+    			<input id="port" type="text" max="1000"/>
+  			</div>
+			<h2>NIIS</h2>
+			<div class="hold">
+    			<label for="url" >URL</label>
+    			<input id="url" type="text" max="1000"/>
+  			</div>
+		</div>
+		<div class="screen outline"></div>
+		<script src="base.js"></script>
+	</body>
+</html>
+
+<!-- refresh button/adjust font size in safari -->
