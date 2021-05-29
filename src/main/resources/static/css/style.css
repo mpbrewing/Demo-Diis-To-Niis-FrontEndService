@@ -103,7 +103,7 @@ url('../NexaRegular.eot?#iefix') format('embedded-opentype'),
   position: absolute;
   top: 340px;
   left: 10px;
-  height: 330px;
+  height: 380px;
   /* height: 36vh; */
   width: 13.6%;
   text-align: center;
@@ -115,9 +115,32 @@ url('../NexaRegular.eot?#iefix') format('embedded-opentype'),
 div.sideInput div {
   padding-top: 10px;
   position: relative;
-  margin: 4px 0;
+  margin: 2px 0;
 }
-label {
+:root {
+  --select-border: #66cc33;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+.select {
+  width: 92%;
+  min-width: 6ch;
+  max-width: 30ch;
+  border: 2px solid var(--select-border);
+  border-radius: 8px;
+  padding: 0.25em 2px;
+  font-size: 15px;
+  cursor: pointer;
+  line-height: 2;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+.selectLabel {
+  font-size: 18px;
+  color: #cccccc;
+  margin-left: -146px;
+}
+.moveLabel {
   color: #cccccc;
   position: absolute;
   top: 10px;
@@ -185,6 +208,7 @@ input[type=text]:focus {
 
 textarea{
   height: 30vh;
+  width: 27.5vw;
 }
 
 .pUpdate {
@@ -200,7 +224,7 @@ textarea{
   padding-right: 10px;
   /*padding-top: 1vh;
   padding-bottom: 1vh;*/
-  width: 34%;
+  width: 34vw
   height: 97%;
 }
 
@@ -219,10 +243,20 @@ textarea{
   background: url("../images/downarrow.png");
   background-size: 40px 40px;
   background-repeat: no-repeat;
-  margin-right: 14%;
-  margin-left: 4%;
+  margin-right: 10%;
+  margin-left: -10%;
   filter: invert(61%) sepia(56%) saturate(461%) hue-rotate(59deg) brightness(98%) contrast(88%);
 }
+
+.buttonStyleUp {
+  background: url("../images/uparrow.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  margin-right: 10%;
+  margin-left: -10%;
+  filter: invert(61%) sepia(56%) saturate(461%) hue-rotate(59deg) brightness(98%) contrast(88%);
+}
+
 .customB {
   transition-duration: 0.4s;
   transition: ease-in-out;
@@ -251,6 +285,44 @@ textarea{
   width: 30vw;
   text-align:center;
 }
+
+.customM {
+    transition-duration: 0.4s;
+      transition: ease-in-out;
+      display: flex;
+      align-items: center;
+      /*color: #6bc04b;*/
+      color: #45c335;
+      background-color: #FFFFFF;
+      text-align: center;
+      /*filter: invert(61%) sepia(56%) saturate(461%) hue-rotate(59deg) brightness(98%) contrast(88%);*/
+      font-weight: bold;
+      font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+      text-decoration: none;
+      /*padding: 12px 15px;*/
+      padding: 1vh 2vw;
+      margin-top: 10px;
+      font-family: "Nexa Regular", "Nexa Bold";
+      font-style: normal;
+      src: url("../NexaRegular.ttf");
+      border-radius: 15px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #45c335;
+      height: 6vh;
+      vertical-align: middle;
+      width: 14vw;
+      text-align:center;
+}
+
+.customML{
+    transform: translateX(15.5vw);
+}
+
+.customMR{
+    transform: translateY(-7vh);
+}
+
 .middle {
   float: left;
   height: 69vh; 
@@ -293,11 +365,11 @@ textarea{
 
 .mb1{
     /*transform: translate(550px,-250px);*/
-    transform: translate(30.7vw,-26vh);
+    transform: translate(31vw,-32vh);
 }
 
 .mb2{
-    transform: translate(30.7vw,-20vh);
+    transform: translate(31vw,-26vh);
 }
 
 .middleButton{
@@ -326,6 +398,10 @@ textarea{
     vertical-align: middle;
     width: 20vw;
     text-align:center;
+}
+
+.niisJsonR{
+    transform: translateY(-7vh);
 }
 
 /*

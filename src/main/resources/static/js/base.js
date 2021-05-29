@@ -8,8 +8,8 @@ function normal(x) {
   x.style.filter = "invert(98%) sepia(0%) saturate(9%) hue-rotate(162deg) brightness(90%) contrast(93%)";
 }
 
-let ids = ['b1', 'b2', 'b3', 'b4'];
-let icons = ['icon1', 'icon2', 'icon3', 'icon4'];
+let ids = ['b1', 'b2', 'b3', 'b4','b5','b6'];
+let icons = ['icon1', 'icon2', 'icon3', 'icon4','icon5','icon6'];
 
 function overs(x, x_id) {
   x.style.color = "#ffffff";

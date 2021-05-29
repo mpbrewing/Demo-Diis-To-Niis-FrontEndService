@@ -100,84 +100,49 @@ public class webController  {
 */
     @PostMapping(value="/convert", params="diisToNiisRequest=convertRequest")
     public String left(@ModelAttribute("holdObject") bind holdObject){
-        System.out.println("left");
+        System.out.println("Diis Request => Niis Json Request");
         String holdString = "Niis Json Request: " + holdObject.getDiisRequest();
         holdObject.setNiisRequest(holdString);
         return "convert";
     }
     @PostMapping(value="/convert", params="diisToNiisResponse=convertResponse")
     public String right(@ModelAttribute("holdObject") bind holdObject){
-        System.out.println("right");
+        System.out.println("Diis Response => Niis Json Response");
         String holdString = "Niis Json Response: " + holdObject.getDiisResponse();
         holdObject.setNiisResponse(holdString);
         return "convert";
     }
     @PostMapping(value="/convert", params="diisToDiis=submitToDiisHost")
     public String top(@ModelAttribute("holdObject") bind holdObject){
-        System.out.println("top");
+        System.out.println("Diis Request => Diis Response");
         String holdString = "Diis Response: " + holdObject.getDiisRequest();
         holdObject.setDiisResponse(holdString);
         return "convert";
     }
     @PostMapping(value="/convert", params="niisToNiis=submitToNiisService")
     public String bottom(@ModelAttribute("holdObject") bind holdObject){
-        System.out.println("bottom");
+        System.out.println("Niis Json Request => Niis Json Response");
         String holdString = "Niis Json Response: " + holdObject.getNiisRequest();
         holdObject.setNiisResponse(holdString);
+        System.out.print(holdObject.getDiisRequest());
         return "convert";
     }
-    /*
-     //<!-- Top -->
-    //<!-- Diis Request => Diis Response -->
-    //<!-- (name = diisToDiis) => (value = submitToDiisHost) -->
-
-    @PostMapping(value="/convert", params="diisToDiis=submitToDiisHost")
-    public String top(@ModelAttribute("diisRequest") NiisAccount diisRequest, @ModelAttribute("diisResponse") NiisAccount diisResponse, @ModelAttribute("niisRequest") NiisAccount niisRequest, @ModelAttribute("niisResponse") NiisAccount niisResponse){
-        System.out.println("top");
-        String holdString = "Diis Response: " + diisRequest.getAccount();
-        diisResponse.setAccount(holdString);
+    //Niis Request -> Diis Request
+    @PostMapping(value="/convert", params="niisToDiisRequest=convertNiisRequest")
+    public String upLeft(@ModelAttribute("holdObject") bind holdObject){
+        System.out.println("Niis Json Request => Diis Request");
+        String holdString = "Diis Request: " + holdObject.getNiisRequest();
+        holdObject.setDiisRequest(holdString);
         return "convert";
     }
-
-    //<!-- Bottom -->
-    //<!-- Niis Json Request => Niis Json Response -->
-    //<!-- (name = niisToNiis) => (value = submitToNiisService) -->
-
-    @PostMapping(value="/convert", params="niisToNiis=submitToNiisService")
-    public String bottom(@ModelAttribute("diisRequest") NiisAccount diisRequest, @ModelAttribute("diisResponse") NiisAccount diisResponse, @ModelAttribute("niisRequest") NiisAccount niisRequest, @ModelAttribute("niisResponse") NiisAccount niisResponse){
-        System.out.println("bottom");
-        String holdString = "Niis Json Response: " + niisRequest.getAccount();
-        niisResponse.setAccount(holdString);
+    //Niis Response -> Diis Response
+    @PostMapping(value="/convert", params="niisToDiisResponse=convertNiisResponse")
+    public String upRight(@ModelAttribute("holdObject") bind holdObject){
+        System.out.println("Niis Json Response => Diis Response");
+        String holdString = "Diis Response: " + holdObject.getNiisResponse();
+        holdObject.setDiisResponse(holdString);
         return "convert";
     }
-
-    //<!-- Right -->
-    //<!-- Diis Response => Niis Json Response -->
-    //<!-- (name = diisToNiisResponse) => (value = convertResponse) -->
-
-    @PostMapping(value="/convert", params="diisToNiisResponse=convertResponse")
-    public String right(@ModelAttribute("diisRequest") NiisAccount diisRequest, @ModelAttribute("diisResponse") NiisAccount diisResponse, @ModelAttribute("niisRequest") NiisAccount niisRequest, @ModelAttribute("niisResponse") NiisAccount niisResponse){
-        System.out.println("right");
-        String holdString = "Niis Json Response: " + diisResponse.getAccount();
-        niisResponse.setAccount(holdString);
-        return "convert";
-    }
-
-*/
-    /*
-
-    //First Version
-
-    @PostMapping("/convert")
-    public String submissionResult(@ModelAttribute("diisRequest") NiisAccount diisRequest, @ModelAttribute("diisResponse") NiisAccount diisResponse, @ModelAttribute("niisRequest") NiisAccount niisRequest, @ModelAttribute("niisResponse") NiisAccount niisResponse){
-        System.out.println(diisRequest.getAccount());
-        System.out.println(diisResponse.getAccount());
-        return "convert";
-    }
-
-*/
-
-    //
 
 
     @GetMapping("/index")
@@ -195,22 +160,5 @@ public class webController  {
         System.out.println(response.getAccount());
         return "index";
     }
-
-/*
-    @PostMapping("/index")
-    public String submissionResult(@ModelAttribute("request") NiisAccount request, @ModelAttribute("response") NiisAccount response) throws IOException, InterruptedException {
-        //System.out.println(httpRequest(request));
-        //System.out.println("Request" + " " + request);
-        System.out.println(response.getAccount());
-        //response.setAccount(httpRequest(request));
-        String holdString = httpRequest(request);
-        holdString = holdString.replace("\\n","").replace("\\r","\n").replace("\\","");
-        holdString = holdString.replaceAll("^\"","");
-        holdString = holdString.replaceAll("\"$","");
-        response.setAccount(holdString);
-        return "index";
-    }
-*/
-
 
 }
