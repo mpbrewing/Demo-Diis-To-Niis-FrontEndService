@@ -15,6 +15,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -64,45 +66,25 @@ public class webController  {
 
     @GetMapping("/convert")
     public String friendForm(Model model) {
-        //NiisAccount diisRequest = new NiisAccount();
-        //NiisAccount diisResponse = new NiisAccount();
-        //NiisAccount niisRequest = new NiisAccount();
-        //NiisAccount niisResponse = new NiisAccount();
         bind holdObject = new bind();
-        //model.addAttribute("diisRequest", diisRequest);
-        //model.addAttribute("diisResponse", diisResponse);
-        //model.addAttribute("niisRequest", niisRequest);
-        //model.addAttribute("niisResponse", niisResponse);
+        holdObject.setNiisHosts(fillNiisHost());
         model.addAttribute("holdObject",holdObject);
         return "convert";
     }
 
+    public List<String> fillNiisHost(){
+        List<String> hosts = new ArrayList<>();
+        hosts.add("32.236.91.83/dbk-niis-c-diis-dev");
+        hosts.add("32.236.91.83/dbk-niis-service-dev");
+        return hosts;
+    }
 
-    //<!-- Left -->
-    //<!-- Diis Request => Niis Json Request -->
-    //<!-- (name = diisToNiisRequest) => (value = convertRequest) -->
-/*
-     @PostMapping(value="/convert", params="diisToNiisRequest=convertRequest")
-     public String left(@ModelAttribute("holdObject") NiisAccount holdObject,@ModelAttribute("diisRequest") NiisAccount diisRequest, @ModelAttribute("diisResponse") NiisAccount diisResponse, @ModelAttribute("niisRequest") NiisAccount niisRequest, @ModelAttribute("niisResponse") NiisAccount niisResponse){
-         System.out.println("left");
-         String holdString = "Niis Json Request: " + diisRequest.getAccount();
-         niisRequest.setAccount(holdString);
-         //
-         System.out.println("diis Request: " + diisRequest.getAccount());
-         System.out.println("diis Response: " + diisResponse.getAccount());
-         System.out.println("niis Request: " + niisRequest.getAccount());
-         System.out.println("niis Response: " + niisResponse.getAccount());
-         //
-
-         //
-         return "convert";
-     }
-*/
     @PostMapping(value="/convert", params="diisToNiisRequest=convertRequest")
     public String left(@ModelAttribute("holdObject") bind holdObject){
         System.out.println("Diis Request => Niis Json Request");
         String holdString = "Niis Json Request: " + holdObject.getDiisRequest();
         holdObject.setNiisRequest(holdString);
+        holdObject.setNiisHosts(fillNiisHost());
         return "convert";
     }
     @PostMapping(value="/convert", params="diisToNiisResponse=convertResponse")
@@ -110,21 +92,30 @@ public class webController  {
         System.out.println("Diis Response => Niis Json Response");
         String holdString = "Niis Json Response: " + holdObject.getDiisResponse();
         holdObject.setNiisResponse(holdString);
+        holdObject.setNiisHosts(fillNiisHost());
         return "convert";
     }
     @PostMapping(value="/convert", params="diisToDiis=submitToDiisHost")
     public String top(@ModelAttribute("holdObject") bind holdObject){
         System.out.println("Diis Request => Diis Response");
-        String holdString = "Diis Response: " + holdObject.getDiisRequest();
+        String holdString = "Diis Response: " + holdObject.getDiisRequest() + " --- response received from request to (host): " + holdObject.getDiisHost() + "(port): " + holdObject.getDiisPort();
         holdObject.setDiisResponse(holdString);
+        holdObject.setNiisHosts(fillNiisHost());
+        //
+
+        //
         return "convert";
     }
     @PostMapping(value="/convert", params="niisToNiis=submitToNiisService")
     public String bottom(@ModelAttribute("holdObject") bind holdObject){
         System.out.println("Niis Json Request => Niis Json Response");
-        String holdString = "Niis Json Response: " + holdObject.getNiisRequest();
+        String holdString = "Niis Json Response: " + holdObject.getNiisRequest() + " --- response received from request to (host): " + holdObject.getNiisHost() + " and (port): " + holdObject.getNiisPort();
         holdObject.setNiisResponse(holdString);
         System.out.print(holdObject.getDiisRequest());
+        holdObject.setNiisHosts(fillNiisHost());
+        //
+
+        //
         return "convert";
     }
     //Niis Request -> Diis Request
@@ -133,6 +124,7 @@ public class webController  {
         System.out.println("Niis Json Request => Diis Request");
         String holdString = "Diis Request: " + holdObject.getNiisRequest();
         holdObject.setDiisRequest(holdString);
+        holdObject.setNiisHosts(fillNiisHost());
         return "convert";
     }
     //Niis Response -> Diis Response
@@ -141,9 +133,9 @@ public class webController  {
         System.out.println("Niis Json Response => Diis Response");
         String holdString = "Diis Response: " + holdObject.getNiisResponse();
         holdObject.setDiisResponse(holdString);
+        holdObject.setNiisHosts(fillNiisHost());
         return "convert";
     }
-
 
     @GetMapping("/index")
     public String friendForm2(Model model) {

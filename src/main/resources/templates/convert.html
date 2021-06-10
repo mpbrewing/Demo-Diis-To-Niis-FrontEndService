@@ -11,133 +11,130 @@
 	<link rel="icon" href="images/32.png">
 </head>
 	<body>
-		<div>
-			<div class="header">
-				<h1>
-					<img src="images/logo2.png" alt="Diis To Niis" class="logo" draggable="false"/>
-				</h1>
-			</div>
-			<nav class="nav">
-				<div id="navList" class="nav__links">
-					<a class="nav__link" href="operations" id="btnNav" onMouseOver="over(this)" onMouseOut="normal(this)">
-						<i class="icon-operations icon-details"></i>
-						Operations
-					</a>
-					<a class="nav__link nav__link--active" href="convert" id="btnNav1">
-						<i class="icon-convert icon-details"></i>
-						Convert
-					</a>
-					<a class="nav__link" href="history" id="btnNav2" onMouseOver="over(this)" onMouseOut="normal(this)">
-						<i class="icon-history icon-details"></i>
-						History
-					</a>
+		<form th:action="@{/convert}" method="post" name="niis2diis">
+			<div>
+				<div class="header">
+					<h1>
+						<img src="images/logo2.png" alt="Diis To Niis" class="logo" draggable="false"/>
+					</h1>
 				</div>
-			</nav>
-			<div class="sideInput outline">
-				<h2>DIIS</h2>
-				<label class="selectLabel">Host</label>
-				<div>
-					<select name="host" id="host" class="select">
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-						<option value="4">Option 4</option>
+				<nav class="nav">
+					<div id="navList" class="nav__links">
+						<a class="nav__link" href="operations" id="btnNav" onMouseOver="over(this)" onMouseOut="normal(this)">
+							<i class="icon-operations icon-details"></i>
+							Operations
+						</a>
+						<a class="nav__link nav__link--active" href="convert" id="btnNav1">
+							<i class="icon-convert icon-details"></i>
+							Convert
+						</a>
+						<a class="nav__link" href="history" id="btnNav2" onMouseOver="over(this)" onMouseOut="normal(this)">
+							<i class="icon-history icon-details"></i>
+							History
+						</a>
+					</div>
+				</nav>
+				<div class="sideInput outline">
+					<h2>DIIS</h2>
+					<div class="hold">
+						<label class="moveLabel active" for="diisHost">Host</label>
+						<input id="diisHost" type="text" max="1000" th:field="${holdObject.diisHost}"/>
+					</div>
+					<div class="hold">
+						<label class="moveLabel active" for="port">Port</label>
+						<input id="port" type="text" max="1000" th:field="${holdObject.diisPort}"/>
+					</div>
+					<h2>NIIS</h2>
+						<label class="selectLabel">Host</label>
+					<div>
+					<select name="niisHost" id="niisHost" class="select" th:field="*{holdObject.niisHost}">
+					  <option th:each="i : ${holdObject.niisHosts}"
+						 th:value="${i}"
+						 th:text="${i}"
+					  th:selected="${i==holdObject.niisHost}">
+					  </option>
 					</select>
-            	</div>
-            <div class="hold">
-                <label class="moveLabel" for="port">Port</label>
-                <input id="port" type="text" max="1000"/>
-            </div>
-            <h2>NIIS</h2>
-				<label class="selectLabel">Host</label>
-            <div>
-				<select name="niisHost" id="niisHost" class="select">
-					<option value="1">Option 1</option>
-					<option value="2">Option 2</option>
-					<option value="3">Option 3</option>
-					<option value="4">Option 4</option>
-				</select>
-            </div>
-            <div class="hold">
-                <label class="moveLabel" for="niisPort">Port</label>
-                <input id="niisPort" type="text" max="1000"/>
-            </div>
-        </div>
-        <div class="screen">
-            <form th:action="@{/convert}" method="post">
-            <div class="leftConvert">
-                <!--	<form th:action="@{/convert}" method="post">   -->
-                            <p class="pUpdate">DIIS Request</p>
-                            <!-- Diis Request -->
-						<textarea class="textAreaStyle outline" name="diisRequest" cols="60" rows="4" th:field="${holdObject.diisRequest}"></textarea>
-						<!-- Left -->
-						<!-- Diis Request => Niis Json Request -->
-						<!-- (name = diisToNiisRequest) => (value = convertRequest) -->
-						<button class="customM customML" name="diisToNiisRequest" value="convertRequest" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b1">
-							<i class="buttonStyle icon-details" id="icon1"></i>
-							<span>
-								Convert DIIS
-							</span>
-						</button>
-						<button class="customM customMR" name="niisToDiisRequest" value="convertNiisRequest"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b5">
-							<i class="buttonStyleUp icon-details" id="icon5"></i>
-							<span>
+				</div>
+				<div class="hold">
+					<label class="moveLabel active" for="niisPort">Port</label>
+					<input id="niisPort" type="text" max="1000" th:field="${holdObject.niisPort}"/>
+				</div>
+			</div>
+			<div class="screen">
+
+				<div class="leftConvert">
+					<!--	<form th:action="@{/convert}" method="post">   -->
+								<p class="pUpdate">DIIS Request</p>
+								<!-- Diis Request -->
+							<textarea class="textAreaStyle outline" name="diisRequest" cols="60" rows="4" th:field="${holdObject.diisRequest}"></textarea>
+							<!-- Left -->
+							<!-- Diis Request => Niis Json Request -->
+							<!-- (name = diisToNiisRequest) => (value = convertRequest) -->
+							<button class="customM customML" name="diisToNiisRequest" value="convertRequest" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b1">
+								<i class="buttonStyle icon-details" id="icon1"></i>
+								<span>
+									Convert DIIS
+								</span>
+							</button>
+							<button class="customM customMR" name="niisToDiisRequest" value="convertNiisRequest"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b5">
+								<i class="buttonStyleUp icon-details" id="icon5"></i>
+								<span>
+										Convert NIIS
+									</span>
+							</button>
+							<!-- Top -->
+							<!-- Diis Request => Diis Response -->
+							<!-- (name = diisToDiis) => (value = submitToDiisHost) -->
+							<button class="middleButton mb1" name="diisToDiis" value="submitToDiisHost" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b2">
+								<i class="middleButtonStyle icon-details" id="icon2"></i>
+								<span>
+									Submit to DIIS Host
+								</span>
+							</button>
+							<!-- </form>
+							<form th:action="@{/convert}" method="post">  -->
+								<p class="pUpdate niisJsonR">NIIS Json Request</p>
+								<!-- Niis Request -->
+							<textarea class="niisJsonR textAreaStyle outline" name="niisJsonRequest" cols="60" rows="4" th:field="${holdObject.niisRequest}"></textarea>
+							<!-- th:field="${niisRequest.account}" -->
+							<!-- Bottom -->
+							<!-- Niis Json Request => Niis Json Response -->
+							<!-- (name = niisToNiis) => (value = submitToNiisService) -->
+							<button class="middleButton mb2" name="niisToNiis" value="submitToNiisService" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b3">
+								<i class="middleButtonStyle icon-details" id="icon3"></i>
+								<span>
+									Submit to NIIS Service
+								</span>
+							</button>
+							<!-- 	</form>   -->
+							</div>
+							<div class="rightConvert">
+								<!--<form th:action="@{/convert}" method="post"> -->
+							<p class="pUpdate">DIIS Response</p>
+							<!-- Diis Response -->
+							<textarea class="textAreaStyle outline" name="diisResponse" cols="60" rows="4" th:field="${holdObject.diisResponse}"></textarea>
+							<!-- Right -->
+							<!-- Diis Response => Niis Json Response -->
+							<!-- (name = diisToNiisResponse) => (value = convertResponse) -->
+							<button class="customM customML" name="diisToNiisResponse" value="convertResponse"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b4">
+								<i class="buttonStyle icon-details" id="icon4"></i>
+								<span>
+									Convert DIIS
+								</span>
+							</button>
+								<button class="customM customMR" name="niisToDiisResponse" value="convertNiisResponse"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b6">
+									<i class="buttonStyleUp icon-details" id="icon6"></i>
+									<span>
 									Convert NIIS
 								</span>
-						</button>
-						<!-- Top -->
-						<!-- Diis Request => Diis Response -->
-						<!-- (name = diisToDiis) => (value = submitToDiisHost) -->
-						<button class="middleButton mb1" name="diisToDiis" value="submitToDiisHost" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b2">
-							<i class="middleButtonStyle icon-details" id="icon2"></i>
-							<span>
-								Submit to DIIS Host
-							</span>
-						</button>
-						<!-- </form>
-                        <form th:action="@{/convert}" method="post">  -->
-                            <p class="pUpdate niisJsonR">NIIS Json Request</p>
-                            <!-- Niis Request -->
-						<textarea class="niisJsonR textAreaStyle outline" name="niisJsonRequest" cols="60" rows="4" th:field="${holdObject.niisRequest}"></textarea>
-						<!-- th:field="${niisRequest.account}" -->
-						<!-- Bottom -->
-						<!-- Niis Json Request => Niis Json Response -->
-						<!-- (name = niisToNiis) => (value = submitToNiisService) -->
-						<button class="middleButton mb2" name="niisToNiis" value="submitToNiisService" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b3">
-							<i class="middleButtonStyle icon-details" id="icon3"></i>
-							<span>
-								Submit to NIIS Service
-							</span>
-						</button>
-						<!-- 	</form>   -->
-                        </div>
-                        <div class="rightConvert">
-                            <!--<form th:action="@{/convert}" method="post"> -->
-						<p class="pUpdate">DIIS Response</p>
-						<!-- Diis Response -->
-						<textarea class="textAreaStyle outline" name="diisResponse" cols="60" rows="4" th:field="${holdObject.diisResponse}"></textarea>
-						<!-- Right -->
-						<!-- Diis Response => Niis Json Response -->
-						<!-- (name = diisToNiisResponse) => (value = convertResponse) -->
-						<button class="customM customML" name="diisToNiisResponse" value="convertResponse"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b4">
-							<i class="buttonStyle icon-details" id="icon4"></i>
-							<span>
-								Convert DIIS
-							</span>
-						</button>
-							<button class="customM customMR" name="niisToDiisResponse" value="convertNiisResponse"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="b6">
-								<i class="buttonStyleUp icon-details" id="icon6"></i>
-								<span>
-								Convert NIIS
-							</span>
-							</button>
-					<!-- </form> -->
-					<p class="pUpdate niisJsonR">NIIS Json Response</p>
-					<!-- Niis Response -->
-					<textarea class="textAreaStyle outline niisJsonR" name="niisJsonResponse" cols="60" rows="4" th:field="${holdObject.niisResponse}"></textarea>
+								</button>
+						<!-- </form> -->
+						<p class="pUpdate niisJsonR">NIIS Json Response</p>
+						<!-- Niis Response -->
+						<textarea class="textAreaStyle outline niisJsonR" name="niisJsonResponse" cols="60" rows="4" th:field="${holdObject.niisResponse}"></textarea>
+					</div>
 				</div>
-				</form>
 			</div>
-		</div>
+		</form>
 	</body>
 </html>

@@ -40,6 +40,16 @@ function normals(x, x_id) {
   }
 }
 
+$(document).ready(function() {
+ $('.moveLabel').each(function(index){
+  if($(this).val().length != 0){
+   $(this).nextSibling.labels[0].classList.add("active")
+  }
+ });
+});
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll('.hold').forEach(item => {
@@ -48,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let id = event.target.getAttribute('id');
       let testing = document.getElementById(id);
       var testLabel = testing.labels[0]
-      testLabel.classList.add("active");
+      //testLabel.classList.add("active");
     })
 
     item.addEventListener('focusout', (event) => {
@@ -59,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let id = event.target.getAttribute('id');
         let testing = document.getElementById(id);
         var testLabel = testing.labels[0]
-        testLabel.classList.remove("active");
+        //testLabel.classList.remove("active");
       }
     });
   })
