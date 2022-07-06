@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Diis To Niis</title>
-		<link href="css/style.css" type="text/css" rel="stylesheet">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<script src="js/base.js"></script>
-		<link rel="icon" href="images/32.png">
-	</head>
-	<body>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Diis To Niis</title>
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="js/base.js"></script>
+	<link rel="icon" href="images/32.png">
+</head>
+<body>
+<form th:action="@{/operations}" method="post" name="niis2diis">
+	<div>
 		<div class="header">
 			<h1>
 				<img src="images/logo2.png" alt="Diis To Niis" class="logo" draggable="false"/>
@@ -32,28 +34,89 @@
 				</a>
 			</div>
 		</nav>
-		<div class="sideInput outline">
+		<div class="opSide sideInput outline">
 			<h2>DIIS</h2>
 			<div class="hold">
-    			<label for="host" >Host</label>
-    			<input id="host" type="text" max="1000"/>
-  			</div>
+				<label class="moveLabel active" for="diisHost">Host</label>
+				<input id="diisHost" type="text" max="1000" th:field="${holdObject.diisHost}"/>
+			</div>
 			<div class="hold">
-    			<label for="port" >Port</label>
-    			<input id="port" type="text" max="1000"/>
-  			</div>
+				<label class="moveLabel active" for="port">Port</label>
+				<input id="port" type="text" max="1000" th:field="${holdObject.diisPort}"/>
+			</div>
 			<h2>NIIS</h2>
-			<div class="hold">
-    			<label for="url" >URL</label>
-    			<input id="url" type="text" max="1000"/>
-  			</div>
+			<div class="hold holdl">
+				<label class="moveLabel active" for="niisUrl">URL</label>
+				<input id="niisUrl" type="text" max="1000" th:field="${holdObject.niisUrl}"/>
+			</div>
 		</div>
-		<div class="screen outline"></div>
-		<!-- Div with three inputs (Customer, Pin, CVF) -->
-		<!-- Div with two checkboxes (Diis, Niis) -->
-		<!-- Div with two buttons (Generate request, Submit request -->
-		<!-- Div with Table ??? (ANUM, ATYP, AUSR) ??? checkboxes -->
+	</div>
+	<div class="screen">
+		<div class="section1 outline">
+			<div class="opLabel">
+				<!-- Div with three inputs (Customer, Pin, CVF) -->
+				<div class="hold">
+					<label class="moveLabel active" for="customer">Customer</label>
+					<input id="customer" type="text" max="1000" th:field="${holdObject.customer}"/>
+				</div>
+				<div class="hold">
+					<label class="moveLabel active" for="pin" th:field="${holdObject.pin}">Pin</label>
+					<input id="pin" type="text" max="1000"/>
+				</div>
+				<div class="hold">
+					<label class="moveLabel active" for="CVF" th:field="${holdObject.cvf}">CVF</label>
+					<input id="CVF" type="text" max="1000"/>
+				</div>
+			</div>
+			<div class="opLabel oplpt2">
+				<!-- Div with two buttons (Generate request, Submit request -->
+				<div class="moveOpCb">
+					<button class="customM customML" name="generateRequest" value="generateRequest" onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="o1">
+						<span>Generate Request</span>
+					</button>
+					<button class="customM customMR" name="submitRequest" value="submitRequest"  onMouseOver="overs(this,this.id)" onMouseOut="normals(this,this.id)" id="o2">
+						<span>Submit Request</span>
+					</button>
+				</div>
+				<!-- Div with two checkboxes (Diis, Niis) -->
+				<div class="moveOpCb2">
+					<div class="cb">
+						<input class="rr regular-radio" type="checkbox" id="diisCheck" checked="checked"  name="selection" value="diis">
+						<label class="opLabel2" for="diisCheck">DIIS</label>
+					</div>
+					<div class="cb">
+						<input class="rr regular-radio" type="checkbox" id="niisCheck" name="selection" value="niis">
+						<label class="opLabel2" for="niisCheck">NIIS</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Div with Table ??? (USR, ANUM, ATYP, AUSR) ??? checkboxes -->
+		<div class="section2">
+			<table id="product">
+				<tr>
+					<th>Active</th>
+					<th>USR</th>
+					<th>ANUM</th>
+					<th>ATYP</th>
+					<th>AUSR</th>
+				</tr>
+				<tr th:each="product : ${holdObject.products}">
+					<td th:text="${product.active}"></td>
+					<td th:text="${product.usr}"></td>
+					<td th:text="${product.anum}"></td>
+					<td th:text="${product.atyp}"></td>
+					<td th:text="${product.ausr}"></td>
+				</tr>
+			</table>
+		</div>
 		<!-- Div with two text areas (Request, Response) -->
-		<script src="base.js"></script>
-	</body>
+		<div class="section3">
+			<textarea class="textAreaStyle ota" name="request" cols="60" rows="4" th:field="${holdObject.request}">request</textarea>
+			<textarea class="textAreaStyle ota" name="response" cols="60" rows="4" th:field="${holdObject.response}">response</textarea>
+		</div>
+	</div>
+	<script src="base.js"></script>
+</form>
+</body>
 </html>

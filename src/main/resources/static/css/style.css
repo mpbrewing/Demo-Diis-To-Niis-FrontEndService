@@ -103,7 +103,7 @@ url('../NexaRegular.eot?#iefix') format('embedded-opentype'),
   position: absolute;
   top: 340px;
   left: 10px;
-  height: 380px;
+  height: 390px;
   /* height: 36vh; */
   width: 13.6%;
   text-align: center;
@@ -129,7 +129,7 @@ div.sideInput div {
   border: 2px solid var(--select-border);
   border-radius: 8px;
   padding: 0.25em 2px;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
   line-height: 2;
   background-color: #fff;
@@ -169,6 +169,11 @@ input[type=text]:focus {
 .hold {
   padding-bottom: 10px;
 }
+
+.holdl {
+  transform: translateY(16px);
+}
+
 .screen {
   position: absolute;
   top: 0%;
@@ -201,7 +206,7 @@ input[type=text]:focus {
   box-shadow: none;
   font-size: 14px;
   font-weight: 400;
-  max-width: 100%; 
+  max-width: 100%;
   max-height: 100%;
   font-size-adjust: auto;
 }
@@ -325,7 +330,7 @@ textarea{
 
 .middle {
   float: left;
-  height: 69vh; 
+  height: 69vh;
   width: 360px;
   padding-top: 170px;
   padding-left: 20px;
@@ -402,6 +407,193 @@ textarea{
 
 .niisJsonR{
     transform: translateY(-7vh);
+}
+
+/*
+Operations
+*/
+
+.op {
+  text-align: center;
+  font-family: "Nexa Regular", "Nexa Bold";
+  font-style: normal;
+  src: url("../NexaRegular.ttf");
+  color: #666666;
+  border-radius: 20px;
+}
+
+.section1 {
+  height: 26%;
+  width: 100%;
+}
+
+.section2 {
+  height: 76%;
+  width:50%;
+}
+
+.section3 {
+  position: absolute;
+  height: 76%;
+  width:50%;
+  left: 50%;
+  top: 26.4%;
+}
+
+.opSide {
+  height: 340px;
+}
+
+.opLabel {
+  position: absolute;
+  height: 100%;
+  width:50%;
+  left: -2%;
+  top: 3%;
+}
+
+.opLabel2 {
+    color: #cccccc;
+    font-size: 24px;
+    padding-left: 6px;
+}
+
+.oplpt2 {
+    left: 50%
+}
+
+div.oplpt2 div {
+     padding-left: 20px;
+     padding-right: 20px;
+}
+
+.cb {
+ left: 25%;
+ float: left;
+}
+
+.rr {
+      transform: translateY(5px);
+}
+
+div.opLabel div {
+  padding-top: 10px;
+  position: relative;
+  margin: 2px 0;
+}
+
+.oplSeries2 {
+
+}
+
+.regular-radio {
+	-webkit-appearance: none;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+.regular-radio:checked:after {
+	content: ' ';
+	width: 12px;
+	height: 12px;
+	border-radius: 50px;
+	position: absolute;
+	top: 3px;
+	background: #45c335;
+	box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+	text-shadow: 0px;
+	left: 3px;
+	font-size: 32px;
+}
+
+.regular-radio:checked {
+	color: #99a1a7;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.regular-radio:active, .regular-radio:checked:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.big-radio {
+	padding: 16px;
+}
+
+.big-radio:checked:after {
+	width: 24px;
+	height: 24px;
+	left: 4px;
+	top: 4px;
+}
+
+.moveOpCb {
+    transform: translateY(-10px);
+    transform: translateX(40px);
+}
+
+.moveOpCb2 {
+    transform: translateY(-50px);
+}
+
+.ota {
+ transform: translateY(5px);
+ width: 95%;
+ background-color: #FAFAFA;
+ border-radius: 15px;
+ border-style: solid;
+ border-width: 4px;
+ border-color: #E0E0E0;
+}
+
+.otable {
+
+}
+
+#product {
+  border-collapse: collapse;
+  width: 98%;
+  text-align: center;
+   transform: translateX(6px);
+   transform: translateY(12px);
+   border-radius:6px;
+}
+
+#product td, #customers th {
+  padding: 8px;
+}
+
+#product tr:nth-child(even){background-color: #f2f2f2;}
+
+#product tr:hover {background-color: #ddd;}
+
+#product th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #6bc04b;
+  color: white;
+}
+
+#product td:first-child, th:first-child {
+     border-left: none;
+}
+
+#product th:first-of-type {
+  border-top-left-radius: 10px;
+}
+#product th:last-of-type {
+  border-top-right-radius: 10px;
+}
+#product tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+#product tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
 }
 
 /*

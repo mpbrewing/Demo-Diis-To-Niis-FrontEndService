@@ -2,6 +2,8 @@ package com.diis2niis.dev.diistoniis.web;
 
 import com.diis2niis.dev.diistoniis.models.NiisAccount;
 import com.diis2niis.dev.diistoniis.models.bind;
+import com.diis2niis.dev.diistoniis.models.opBind;
+import com.diis2niis.dev.diistoniis.models.opTableEntry;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -151,6 +153,56 @@ public class webController  {
     public String submissionResult2(@ModelAttribute("request") NiisAccount request, @ModelAttribute("response") NiisAccount response){
         System.out.println(response.getAccount());
         return "index";
+    }
+
+    @GetMapping("/operations")
+    public String setupTable(Model model){
+        List<opTableEntry> products = new ArrayList<>();
+        int counting = 8;
+        for (int x = 0; x < counting; x++){
+            products.add(createTableEntry(true,"angela","1","type1","1"));
+            products.add(createTableEntry(true,"michael","2","type1","2"));
+            products.add(createTableEntry(true,"barkley","3","type1","3"));
+        }
+        opBind holdObject = new opBind();
+        holdObject.setProducts(products);
+        model.addAttribute("holdObject",holdObject);
+        return "operations";
+    }
+
+    public opTableEntry createTableEntry(Boolean active, String usr, String anum,
+                                         String atyp, String ausr){
+        opTableEntry entry = new opTableEntry();
+        entry.setActive(active);
+        entry.setUsr(usr);
+        entry.setAnum(anum);
+        entry.setAtyp(atyp);
+        entry.setAusr(ausr);
+        return entry;
+    }
+
+    @PostMapping(value="/operations", params="selection=niis")
+    public String radioButtonNiis(@ModelAttribute("holdObject") opBind holdObject){
+        System.out.println("niis radio button selection");
+        return "operations";
+    }
+
+    @PostMapping(value="/operations", params="selection=diis")
+    public String radioButtonDiis(@ModelAttribute("holdObject") opBind holdObject){
+        System.out.println("diis radio button selection");
+        return "operations";
+    }
+
+    @PostMapping(value="/operations", params="generateRequest=generateRequest")
+    public String generateRequest(@ModelAttribute("holdObject") opBind holdObject){
+        System.out.println("generate Request");
+        return "operations";
+    }
+
+    @PostMapping(value="/operations", params="submitRequest=submitRequest")
+    public String submitRequest(@ModelAttribute("holdObject") opBind holdObject){
+        System.out.println("submit Request");
+        return "operations";
     }
 
 }
