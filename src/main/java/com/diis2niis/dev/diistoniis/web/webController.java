@@ -181,18 +181,6 @@ public class webController  {
         return entry;
     }
 
-    @PostMapping(value="/operations", params="selection=niis")
-    public String radioButtonNiis(@ModelAttribute("holdObject") opBind holdObject){
-        System.out.println("niis radio button selection");
-        return "operations";
-    }
-
-    @PostMapping(value="/operations", params="selection=diis")
-    public String radioButtonDiis(@ModelAttribute("holdObject") opBind holdObject){
-        System.out.println("diis radio button selection");
-        return "operations";
-    }
-
     @PostMapping(value="/operations", params="generateRequest=generateRequest")
     public String generateRequest(@ModelAttribute("holdObject") opBind holdObject){
         System.out.println("generate Request");

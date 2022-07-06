@@ -81,11 +81,11 @@
 				<!-- Div with two checkboxes (Diis, Niis) -->
 				<div class="moveOpCb2">
 					<div class="cb">
-						<input class="rr regular-radio" type="checkbox" id="diisCheck" checked="checked"  name="selection" value="diis">
+						<input class="rr regular-radio" type="radio" id="diisCheck" th:field="${holdObject.selections}" name="diisSelection" value="0">
 						<label class="opLabel2" for="diisCheck">DIIS</label>
 					</div>
 					<div class="cb">
-						<input class="rr regular-radio" type="checkbox" id="niisCheck" name="selection" value="niis">
+						<input class="rr regular-radio" type="radio" id="niisCheck" th:field="${holdObject.selections}" name="niisSelection" value="1">
 						<label class="opLabel2" for="niisCheck">NIIS</label>
 					</div>
 				</div>

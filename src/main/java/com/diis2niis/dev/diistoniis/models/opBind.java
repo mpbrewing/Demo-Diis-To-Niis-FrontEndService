@@ -9,7 +9,7 @@ public class opBind {
     private String customer;
     private String pin;
     private String cvf;
-    private Boolean selection;
+    private int selections;
     private String diisHost;
     private String diisPort;
     private String niisUrl;
