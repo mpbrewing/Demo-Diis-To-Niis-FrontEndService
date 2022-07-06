@@ -102,7 +102,9 @@
 					<th>AUSR</th>
 				</tr>
 				<tr th:each="product : ${holdObject.products}">
-					<td th:text="${product.active}"></td>
+					<td>
+						<input class="rr regular-radio" type="checkbox" th:checked="${product.active}">
+					</td>
 					<td th:text="${product.usr}"></td>
 					<td th:text="${product.anum}"></td>
 					<td th:text="${product.atyp}"></td>

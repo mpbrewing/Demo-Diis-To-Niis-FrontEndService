@@ -162,7 +162,7 @@ public class webController  {
         for (int x = 0; x < counting; x++){
             products.add(createTableEntry(true,"angela","1","type1","1"));
             products.add(createTableEntry(true,"michael","2","type1","2"));
-            products.add(createTableEntry(true,"barkley","3","type1","3"));
+            products.add(createTableEntry(false,"barkley","3","type1","3"));
         }
         opBind holdObject = new opBind();
         holdObject.setProducts(products);
